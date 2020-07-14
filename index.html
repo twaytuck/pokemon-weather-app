@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokemon Weather App</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="subtitle col-6">
+          Current City
+          <br />
+          <h1 class="current-city">
+            Calgary
+          </h1>
+          <p class="province-country" id="province-country">
+            Alberta, Canada
+          </p>
+          <div class="col current-info" id="current-day-time-date">
+            <span id="day-of-the-week-time"> Monday 4:05 </span>
+            <span id="am-pm"> pm </span>
+            <span id="month-date-year"> June 14, 2020 </span>
+            |
+            <span id="current-weather-conditions"> Partly Cloudy </span>
+          </div>
+        </div>
+        <div class="subtitle col-6">
+          <form class="change-city">
+            <label for="city-input">
+              Change city
+            </label>
+            <input
+              type="text"
+              name="city-input"
+              placeholder="Enter your city"
+              autofocus="on"
+              autocomplete="off"
+              id="city-input"
+            />
+            <button class="search" id="search-button">
+              Go!
+            </button>
+            <button class="location" id="current-location-button">
+              <i class="fas fa-map-marker-alt" id="current-location-button"></i>
+              Current location
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="row current-conditions-row">
+        <div class="col-6 current-conditions">
+          <div class="card current-card">
+            <div class="card-body current-body">
+              <div class="current-conditions-title">
+                Current Conditions
+              </div>
+              <div class="current-icon" id="current-icon">
+                <i class="fas fa-cloud-sun"></i>
+              </div>
+              <span class="current">
+                <span
+                  class="current-temperature"
+                  id="today-current-temperature"
+                >
+                  20
+                </span>
+                <span class="current-temperature">
+                  °
+                </span>
+                <span class="temperature-unit">
+                  <span class="celsius" id="celsius">
+                    <strong>
+                      C
+                    </strong>
+                  </span>
+                  <span class="divider">
+                    |
+                  </span>
+                  <span class="fahrenheit" id="fahrenheit">
+                    F
+                  </span>
+                </span>
+              </span>
+              <div class="humidity-wind">
+                <span class="humidity">
+                  <strong class="humidity-title">
+                    Humidity:
+                  </strong>
+                  <span id="humidity"> 34 </span>
+                  %
+                </span>
+                <span class="wind">
+                  <strong class="wind-title">
+                    Wind:
+                  </strong>
+                  <span id="wind-speed"> 15 </span>
+                  km/h
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 pokemon">
+          <div class="card pokemon-card">
+            <div class="card-body pokemon-body">
+              <h4>
+                Weather-Boosted Pokemon Type(s)
+              </h4>
+              <div class="types">
+                Normal, Rock
+                <div class="type-pic"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row forecast">
+        <div class="col forecast-title">
+          Five-Day Forecast
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col forecast-box">
+          <div class="card forecast-card">
+            <div class="card-body forecast-body">
+              <div class="row">
+                <div class="col forecast-day">
+                  <h2 class="forecast-day-of-the-week">
+                    Tuesday
+                  </h2>
+                  <h3 class="forecast-date">
+                    June 15, 2020
+                  </h3>
+                  <div class="forecast-temp">
+                    <div class="forecast-icon">
+                      <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="five-temp">
+                      <span id="day-1-temp">
+                        21°
+                      </span>
+                      <span class="five-unit" id="day-1-unit">
+                        C
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col forecast-day">
+                  <h2 class="forecast-day-of-the-week">
+                    Wednesday
+                  </h2>
+                  <h3 class="forecast-date">
+                    June 16, 2020
+                  </h3>
+                  <div class="forecast-temp">
+                    <div class="forecast-icon">
+                      <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="five-temp">
+                      <span id="day-2-temp">
+                        22°
+                      </span>
+                      <span class="five-unit" id="day-2-unit"> C </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col forecast-day">
+                  <h2 class="forecast-day-of-the-week">
+                    Thursday
+                  </h2>
+                  <h3 class="forecast-date">
+                    June 17, 2020
+                  </h3>
+                  <div class="forecast-temp">
+                    <div class="forecast-icon">
+                      <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="five-temp">
+                      <span id="day-3-temp">
+                        19°
+                      </span>
+                      <span class="five-unit" id="day-3-unit"> C </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col forecast-day">
+                  <h2 class="forecast-day-of-the-week">
+                    Friday
+                  </h2>
+                  <h3 class="forecast-date">
+                    June 18, 2020
+                  </h3>
+                  <div class="forecast-temp">
+                    <div class="forecast-icon">
+                      <i class="fas fa-cloud-showers-heavy"></i>
+                    </div>
+                    <div class="five-temp">
+                      <span id="day-4-temp">
+                        15°
+                      </span>
+                      <span class="five-unit" id="day-4-unit"> C </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col forecast-day">
+                  <h2 class="forecast-day-of-the-week">
+                    Saturday
+                  </h2>
+                  <h3 class="forecast-date">
+                    June 19, 2020
+                  </h3>
+                  <div class="forecast-temp">
+                    <div class="forecast-icon">
+                      <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="five-temp">
+                      <span id="day-5-temp">
+                        20°
+                      </span>
+                      <span class="five-unit" id="day-5-unit"> C </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
