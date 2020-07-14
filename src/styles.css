@@ -1,0 +1,214 @@
+body {
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
+}
+label {
+  display: block;
+  color: rgba(252, 252, 252, 0.9);
+}
+h1 {
+  font-size: 80px;
+  font-weight: 600;
+  color: #fdcb06;
+  text-shadow: 2px 2px 2px #1d2c5f;
+  margin-bottom: 0px;
+}
+p {
+  color: #fdcb06;
+  font-size: 19px;
+  font-weight: 500;
+  text-shadow: 2px 2px 2px #1d2c5f;
+  margin-left: 15px;
+  margin-bottom: 3px;
+}
+h2 {
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 19px;
+}
+h3 {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18px;
+}
+input {
+  background-color: rgba(252, 252, 252, 0.8);
+  border: 1px solid #2b6fb6;
+  border-radius: 4px;
+  box-shadow: 1px 1px 2px #1d2c5f;
+  color: #c11b1b;
+}
+button {
+  border-radius: 50px;
+  border: 1px solid #2b6fb6;
+  background: linear-gradient(to right, #24ccaa, #a2db95);
+  color: #ffffff;
+  font-weight: 400;
+  padding: 3px 10px;
+  box-shadow: 1px 1px 2px #1d2c5f;
+  transition: all 100ms linear;
+}
+button:hover {
+  background: white;
+  background: linear-gradient(to right, #a2db95, #24ccaa);
+  border: 1px solid #2b6fb6;
+}
+h4 {
+  padding: 10px 2px 0px;
+  margin-bottom: 2px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #fdcb06;
+  text-shadow: 1px 1px 2px #1d2c5f;
+}
+img {
+  max-width: 100px;
+  padding: 5px 5px 0px;
+}
+img:hover {
+  transform: scale(2);
+  transition: all 100ms linear;
+  cursor: zoom-in;
+}
+.subtitle,
+.forecast-title {
+  color: rgba(252, 252, 252, 0.9);
+  font-weight: 400;
+  font-size: 17px;
+}
+.subtitle {
+  margin-top: 10px;
+  min-width: 300px;
+}
+.search-button {
+  margin: 0px;
+}
+.current-card {
+  background-color: rgba(43, 111, 182, 0);
+  border: none;
+  margin: 10px 0px;
+}
+.current-body {
+  padding: 0px;
+}
+.current-info {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 20px;
+  color: #e3edfb;
+  margin-bottom: 10px;
+}
+.current-conditions {
+  min-width: 401px;
+  margin: 0 auto;
+}
+.current-conditions-title {
+  padding-top: 5px;
+  padding-left: 70px;
+  color: #e3edfb;
+  font-size: 20px;
+  font-weight: 500;
+  text-shadow: 2px 2px 2px #1d2c5f;
+}
+.current-icon {
+  font-size: 80px;
+  line-height: 100px;
+  display: inline;
+  color: #fdcb06;
+  text-shadow: 2px 2px 2px #1d2c5f;
+}
+.current-temperature,
+.temperature-unit {
+  font-size: 25px;
+}
+.current-temperature {
+  color: #fdcb06;
+  font-weight: 500;
+  text-shadow: 2px 2px 2px #1d2c5f;
+}
+.temperature-unit {
+  color: #240ece;
+  font-weight: 400;
+}
+.celsius:hover,
+.fahrenheit:hover {
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 200ms ease-in-out;
+}
+.humidity-wind {
+  font-size: 18px;
+  line-height: 30px;
+  color: #fdcb06;
+  text-shadow: 1px 1px 2px #1d2c5f;
+  margin-bottom: 5px;
+}
+.humidity {
+  padding-left: 5px;
+}
+.humidity,
+.wind {
+  display: inline;
+}
+.humidity-title,
+.wind-title {
+  color: #240ece;
+  text-shadow: none;
+}
+.wind {
+  padding-left: 20px;
+}
+.pokemon {
+  text-align: center;
+  min-width: 100px;
+  max-width: 350px;
+  margin: 0 auto;
+}
+.pokemon-card {
+  background-color: rgba(43, 111, 182, 0.9);
+  border: 1px solid #e3edfb;
+  box-shadow: 4px 3px 5px #1d2c5f;
+  margin: 10px 0px;
+}
+.pokemon-body {
+  padding: 0px;
+}
+.types {
+  margin-bottom: 5px;
+  font-size: 15px;
+  color: #e3edfb;
+}
+.forecast-title {
+  font-weight: 400;
+  font-size: 19px;
+}
+.forecast-card {
+  margin-bottom: 10px;
+  border: 2px solid #2b6fb6;
+  background: rgba(252, 252, 252, 0.7);
+}
+.card-body {
+  text-align: center;
+}
+.forecast-day {
+  min-width: 120px;
+  padding: 5px;
+}
+.forecast-day-of-the-week {
+  color: #1f04ea;
+}
+.forecast-date {
+  color: #c11b1b;
+}
+.forecast-icon {
+  font-size: 40px;
+  line-height: 40px;
+  color: #fdcb06;
+  text-shadow: 1px 1px 4px #1d2c5f;
+}
+.five-temp {
+  font-size: 15px;
+  font-weight: 400;
+  padding-top: 10px;
+  color: #1f04ea;
+}
