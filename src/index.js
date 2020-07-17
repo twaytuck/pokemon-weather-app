@@ -166,3 +166,45 @@ function go(event) {
 //Listen for Go button to be clicked
 let form = document.querySelector("form");
 form.addEventListener("submit", go);
+
+//Geolocation
+function getLocalConditions(response) {
+  //Capture local temperature
+  let localTemperature = response.data.main.temp;
+  //Make local temp available to fahrenheit/celsius conversion functions
+  window.currentCel = localTemperature;
+  //Round local temp and display in HTML
+  let roundedLocalTemp = Math.round(localTemperature);
+  todayCurrentTemperature.innerHTML = roundedLocalTemp;
+  //Capture local humidity and display in HTML
+  let localHumidity = response.data.main.humidity;
+  humidityElement.innerHTML = localHumidity;
+  //Capture local windspeed, round, and display in HTML
+  let localWindspeed = response.data.wind.speed;
+  localWindspeed = Math.round(localWindspeed * 3.6);
+  windSpeedElement.innerHTML = localWindspeed;
+  //Capture local city name from API response and display in HTML
+  let localCity = response.data.name;
+  h1.innerHTML = localCity;
+  //Capture local country from API response and display in HTML
+  let localCountry = response.data.sys.country;
+  provinceCity.innerHTML = localCountry;
+}
+//Capture local coordinates and define API url
+function getLocation(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiUrlGeolocation = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${unit}&appid=${apiKey}`;
+  axios.get(apiUrlGeolocation).then(getLocalConditions);
+}
+//To be run when Current Location button is clicked
+function useCurrentLocation(event) {
+  event.preventDefault();
+  //Get local coordinates and run function to capture info
+  navigator.geolocation.getCurrentPosition(getLocation);
+  //Clears search field of any text
+  searchField.value = "";
+}
+//Listen for Current Location button to be clicked
+let currentLocationButton = document.querySelector("#current-location-button");
+currentLocationButton.addEventListener("click", useCurrentLocation);
