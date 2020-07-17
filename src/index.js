@@ -113,3 +113,56 @@ function defaultConditions(response) {
 }
 //Send Get request to API for Calgary then run function to capture info
 axios.get(apiUrl).then(defaultConditions);
+
+//City Search
+function localConditionsFromInput(response) {
+  let status = response.status;
+  //If get request returns an ok response
+  if (status === 200) {
+    //Capture city name and change html
+    let cityResponse = response.data.name;
+    h1.innerHTML = cityResponse;
+    //Capture country and display in html
+    let countryResponse = response.data.sys.country;
+    provinceCity.innerHTML = countryResponse;
+    //Capture current temperature for searched city
+    let temperatureFromInput = response.data.main.temp;
+    //Make current temp available to fahrenheit/celsius conversion functions
+    window.currentCel = temperatureFromInput;
+    //Round the current temp and display in HTML
+    let roundedTempFromInput = Math.round(temperatureFromInput);
+    todayCurrentTemperature.innerHTML = roundedTempFromInput;
+    //Capture current windspeed for searched city, round it, display in HTML
+    let windSpeedFromInput = response.data.wind.speed;
+    windSpeedFromInput = Math.round(windSpeedFromInput * 3.6);
+    windSpeedElement.innerHTML = windSpeedFromInput;
+    //Capture current humidity for searched city and display in HTML
+    let humidity = response.data.main.humidity;
+    humidityElement.innerHTML = humidity;
+  }
+}
+//Capture errors
+function error() {
+  if (error) {
+    alert("Sorry, we don't know the weather for that city.");
+  }
+}
+function go(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#city-input");
+  //Capture city entered into search
+  cityInput = cityInput.value;
+  if (cityInput.length < 2) {
+    alert("Please enter a city");
+  } else {
+    //Define url for API
+    let apiUrlCityInput = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&units=${unit}&appid=${apiKey}`;
+    //Get request to API then run function to capture conditions from searched city
+    axios.get(apiUrlCityInput).then(localConditionsFromInput).catch(error);
+  }
+  //Clear search field
+  searchField.value = "";
+}
+//Listen for Go button to be clicked
+let form = document.querySelector("form");
+form.addEventListener("submit", go);
