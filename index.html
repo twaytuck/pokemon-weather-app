@@ -17,6 +17,7 @@
       src="https://kit.fontawesome.com/11aba5ecc5.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/styles.css" />
     <title>Pokemon Weather App</title>
   </head>
@@ -80,7 +81,6 @@
                   class="current-temperature"
                   id="today-current-temperature"
                 >
-                  20
                 </span>
                 <span class="current-temperature">
                   °
@@ -104,14 +104,14 @@
                   <strong class="humidity-title">
                     Humidity:
                   </strong>
-                  <span id="humidity"> 34 </span>
+                  <span id="humidity"> </span>
                   %
                 </span>
                 <span class="wind">
                   <strong class="wind-title">
                     Wind:
                   </strong>
-                  <span id="wind-speed"> 15 </span>
+                  <span id="wind-speed"> </span>
                   km/h
                 </span>
               </div>

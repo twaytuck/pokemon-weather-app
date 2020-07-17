@@ -1,3 +1,4 @@
+//GET DATE TIME INFO
 //Get date info
 let currentInfo = new Date();
 let currentHourAmPm = currentInfo.getHours();
@@ -77,3 +78,38 @@ function getCurrentDateInfo() {
   insertDate();
 }
 getCurrentDateInfo();
+
+//GET LIVE WEATHER DATA
+//Set variables for API url
+let apiKey = "7289d7c7b5f7a8f168b51954ee07d1a2";
+let unit = "metric";
+//Set HTML elements as variables
+let h1 = document.querySelector("h1");
+let provinceCity = document.querySelector(".province-country");
+let todayCurrentTemperature = document.querySelector(
+  "#today-current-temperature"
+);
+let windSpeedElement = document.querySelector("#wind-speed");
+let humidityElement = document.querySelector("#humidity");
+let searchField = document.querySelector("input");
+
+//Default = Calgary, Alberta, Canada
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Calgary&units=${unit}&appid=${apiKey}`;
+function defaultConditions(response) {
+  //Capture current temp in Calgary
+  let defaultTemperature = response.data.main.temp;
+  //Make current temp available for fahrenheit/celsius conversion functions
+  window.currentCel = defaultTemperature;
+  //Round current temp and display in HTML
+  let roundedDefaultTemp = Math.round(defaultTemperature);
+  todayCurrentTemperature.innerHTML = roundedDefaultTemp;
+  //Capture current Calgary windspeed, round it, convert it to km/h, and display in HTML
+  let defaultWindSpeed = response.data.wind.speed;
+  defaultWindSpeed = Math.round(defaultWindSpeed * 3.6);
+  windSpeedElement.innerHTML = defaultWindSpeed;
+  //Capture current Calgary humidity and display in HTML
+  let defaultHumidity = response.data.main.humidity;
+  humidityElement.innerHTML = defaultHumidity;
+}
+//Send Get request to API for Calgary then run function to capture info
+axios.get(apiUrl).then(defaultConditions);
