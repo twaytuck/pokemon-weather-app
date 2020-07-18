@@ -86,7 +86,7 @@ img:hover {
 .current-card {
   background-color: rgba(43, 111, 182, 0);
   border: none;
-  margin: 10px 0px;
+  margin-bottom: 10px;
 }
 .current-body {
   padding: 0px;
@@ -103,7 +103,6 @@ img:hover {
   margin: 0 auto;
 }
 .current-conditions-title {
-  padding-top: 5px;
   padding-left: 70px;
   color: #e3edfb;
   font-size: 20px;
@@ -183,7 +182,7 @@ img:hover {
   font-size: 19px;
 }
 .forecast-card {
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   border: 2px solid #2b6fb6;
   background: rgba(252, 252, 252, 0.7);
 }
@@ -211,4 +210,15 @@ img:hover {
   font-weight: 400;
   padding-top: 10px;
   color: #1f04ea;
+}
+.footer {
+  color: rgba(252, 252, 252, 0.9);
+  margin-top: 0px;
+}
+.link {
+  color: rgba(36, 13, 206, 0.8);
+}
+.link:hover {
+  text-decoration: none;
+  color: #fdcb06;
 }
