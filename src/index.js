@@ -110,6 +110,13 @@ function defaultConditions(response) {
   //Capture current Calgary humidity and display in HTML
   let defaultHumidity = response.data.main.humidity;
   humidityElement.innerHTML = defaultHumidity;
+  let calgaryConditions = response.data.weather[0].main;
+  if (calgaryConditions !== "Clouds") {
+    getCurrentConditions(calgaryConditions);
+  } else {
+    let calgaryClouds = response.data.weather[0].description;
+    getCurrentClouds(calgaryClouds);
+  }
 }
 //Send Get request to API for Calgary then run function to capture info
 axios.get(apiUrl).then(defaultConditions);
@@ -283,3 +290,90 @@ function convertToCelsius() {
 //On click change between Fahrenheit and Celsius
 fahrenheit.addEventListener("click", convertToFahrenheit);
 celsius.addEventListener("click", convertToCelsius);
+
+//WEATHER CONDITIONS
+let conditions = {
+  Thunderstorm: {
+    title: "Thunderstorms",
+    icon: `<i class="fas fa-bolt"></i>`,
+  },
+  Drizzle: {
+    title: "Drizzle",
+    icon: `<i class="fas fa-cloud-rain"></i>`,
+  },
+  Rain: {
+    title: "Rainy",
+    icon: `<i class="fas fa-cloud-showers-heavy" />`,
+  },
+  Snow: {
+    title: "Snowing",
+    icon: `<i class="far fa-snowflake"></i>`,
+  },
+  Clear: {
+    title: "Clear",
+    icon: `<i class="fas fa-sun"></i>`,
+  },
+  Mist: {
+    title: "Misty",
+    icon: `<i class="fas fa-umbrella"></i>`,
+  },
+  Smoke: {
+    title: "Smokey",
+    icon: `<i class="fas fa-smog"></i>`,
+  },
+  Haze: {
+    title: "Haze",
+    icon: `<i class="fas fa-smog"></i>`,
+  },
+  Dust: {
+    title: "Dust",
+    icon: `<i class="fas fa-smog"></i>`,
+  },
+  Fog: {
+    title: "Fog",
+    icon: `<i class="fas fa-smog"></i>`,
+  },
+  Sand: {
+    title: "Sand",
+    icon: `<i class="fas fa-exclamation"></i>`,
+  },
+  Ash: {
+    title: "Volcanic Ash",
+    icon: `<i class="fas fa-exclamation"></i>`,
+  },
+  Squall: {
+    title: "Squall",
+    icon: `<i class="fas fa-wind"></i>`,
+  },
+  Tornado: {
+    title: "Tornado",
+    icon: `<i class="fas fa-exclamation"></i>`,
+  },
+};
+
+let currentConditionsElement = document.querySelector(
+  "#current-weather-conditions"
+);
+let currentIconElement = document.querySelector("#current-icon");
+
+function getCurrentConditions(conditionsDescription) {
+  console.log(conditionsDescription);
+  if (conditions[conditionsDescription] !== undefined) {
+    let title = conditions[conditionsDescription].title;
+    currentConditionsElement.innerHTML = title;
+    let icon = conditions[conditionsDescription].icon;
+    currentIconElement.innerHTML = icon;
+  }
+}
+
+function getCurrentClouds(cloudyConditions) {
+  let cloudTitle = cloudyConditions;
+  if (cloudTitle === "overcast clouds") {
+    cloudTitle = "Cloudy";
+    currentIconElement.innerHTML = `<i class="fas fa-cloud"></i>`;
+  } else {
+    cloudTitle = "Partly Cloudy";
+    currentIconElement.innerHTML = `<i class="fas fa-cloud-sun"></i>`;
+  }
+  currentConditionsElement.innerHTML = cloudTitle;
+}
