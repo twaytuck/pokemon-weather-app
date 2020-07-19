@@ -125,6 +125,7 @@ function localConditionsFromInput(response) {
     //Capture country and display in html
     let countryResponse = response.data.sys.country;
     provinceCity.innerHTML = countryResponse;
+    convertToCelsius();
     //Capture current temperature for searched city
     let temperatureFromInput = response.data.main.temp;
     //Make current temp available to fahrenheit/celsius conversion functions
@@ -139,7 +140,6 @@ function localConditionsFromInput(response) {
     //Capture current humidity for searched city and display in HTML
     let humidity = response.data.main.humidity;
     humidityElement.innerHTML = humidity;
-    convertToCelsius();
   }
 }
 //Capture errors
@@ -170,6 +170,7 @@ form.addEventListener("submit", go);
 
 //Geolocation
 function getLocalConditions(response) {
+  convertToCelsius();
   //Capture local temperature
   let localTemperature = response.data.main.temp;
   //Make local temp available to fahrenheit/celsius conversion functions
@@ -190,7 +191,6 @@ function getLocalConditions(response) {
   //Capture local country from API response and display in HTML
   let localCountry = response.data.sys.country;
   provinceCity.innerHTML = localCountry;
-  convertToCelsius();
 }
 //Capture local coordinates and define API url
 function getLocation(position) {
