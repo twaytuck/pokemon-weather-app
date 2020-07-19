@@ -147,6 +147,13 @@ function localConditionsFromInput(response) {
     //Capture current humidity for searched city and display in HTML
     let humidity = response.data.main.humidity;
     humidityElement.innerHTML = humidity;
+    let conditionsFromInput = response.data.weather[0].main;
+    if (conditionsFromInput !== "Clouds") {
+      getCurrentConditions(conditionsFromInput);
+    } else {
+      let cloudsFromInput = response.data.weather[0].description;
+      getCurrentClouds(cloudsFromInput);
+    }
   }
 }
 //Capture errors
@@ -198,6 +205,13 @@ function getLocalConditions(response) {
   //Capture local country from API response and display in HTML
   let localCountry = response.data.sys.country;
   provinceCity.innerHTML = localCountry;
+  let localConditions = response.data.weather[0].main;
+  if (localConditions !== "Clouds") {
+    getCurrentConditions(localConditions);
+  } else {
+    let localClouds = response.data.weather[0].description;
+    getCurrentClouds(localClouds);
+  }
 }
 //Capture local coordinates and define API url
 function getLocation(position) {
@@ -357,7 +371,6 @@ let currentConditionsElement = document.querySelector(
 let currentIconElement = document.querySelector("#current-icon");
 
 function getCurrentConditions(conditionsDescription) {
-  console.log(conditionsDescription);
   if (conditions[conditionsDescription] !== undefined) {
     let title = conditions[conditionsDescription].title;
     currentConditionsElement.innerHTML = title;
