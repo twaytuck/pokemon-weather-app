@@ -1,7 +1,8 @@
 //GET DATE TIME INFO
 //Get date info
 let currentInfo = new Date();
-let currentHourAmPm = currentInfo.getHours();
+let currentHour = currentInfo.getHours();
+currentHourAmPm = currentHour;
 //Get day of the week & time in am/pm
 function insertDayTime() {
   //Day of the week
@@ -310,30 +311,37 @@ let conditions = {
   Thunderstorm: {
     title: "Thunderstorms",
     icon: `<i class="fas fa-bolt"></i>`,
+    night: `<i class="fas fa-bolt"></i>`,
   },
   Drizzle: {
     title: "Drizzle",
     icon: `<i class="fas fa-cloud-rain"></i>`,
+    night: `<i class="fas fa-cloud-rain"></i>`,
   },
   Rain: {
     title: "Rainy",
     icon: `<i class="fas fa-cloud-showers-heavy" />`,
+    night: `<i class="fas fa-cloud-showers-heavy" />`,
   },
   Snow: {
     title: "Snowing",
     icon: `<i class="far fa-snowflake"></i>`,
+    night: `<i class="far fa-snowflake"></i>`,
   },
   Clear: {
-    title: "Clear",
+    title: "Clear Sky",
     icon: `<i class="fas fa-sun"></i>`,
+    night: `<i class="fas fa-moon"></i>`,
   },
   Mist: {
     title: "Misty",
     icon: `<i class="fas fa-umbrella"></i>`,
+    night: `<i class="fas fa-umbrella"></i>`,
   },
   Smoke: {
     title: "Smokey",
     icon: `<i class="fas fa-smog"></i>`,
+    night: `<i class="fas fa-smog"></i>`,
   },
   Haze: {
     title: "Haze",
@@ -342,26 +350,32 @@ let conditions = {
   Dust: {
     title: "Dust",
     icon: `<i class="fas fa-smog"></i>`,
+    night: `<i class="fas fa-smog"></i>`,
   },
   Fog: {
     title: "Fog",
     icon: `<i class="fas fa-smog"></i>`,
+    night: `<i class="fas fa-smog"></i>`,
   },
   Sand: {
     title: "Sand",
     icon: `<i class="fas fa-exclamation"></i>`,
+    night: `<i class="fas fa-exclamation"></i>`,
   },
   Ash: {
     title: "Volcanic Ash",
     icon: `<i class="fas fa-exclamation"></i>`,
+    night: `<i class="fas fa-exclamation"></i>`,
   },
   Squall: {
     title: "Squall",
     icon: `<i class="fas fa-wind"></i>`,
+    night: `<i class="fas fa-wind"></i>`,
   },
   Tornado: {
     title: "Tornado",
     icon: `<i class="fas fa-exclamation"></i>`,
+    night: `<i class="fas fa-exclamation"></i>`,
   },
 };
 
@@ -371,22 +385,30 @@ let currentConditionsElement = document.querySelector(
 let currentIconElement = document.querySelector("#current-icon");
 
 function getCurrentConditions(conditionsDescription) {
-  if (conditions[conditionsDescription] !== undefined) {
-    let title = conditions[conditionsDescription].title;
-    currentConditionsElement.innerHTML = title;
-    let icon = conditions[conditionsDescription].icon;
-    currentIconElement.innerHTML = icon;
+  if (conditions[conditionsDescription] !== undefined && currentHour < 20) {
+    currentConditionsElement.innerHTML =
+      conditions[conditionsDescription].title;
+    currentIconElement.innerHTML = conditions[conditionsDescription].icon;
+  } else if (
+    conditions[conditionsDescription] !== undefined &&
+    currentHour >= 20
+  ) {
+    currentConditionsElement.innerHTML =
+      conditions[conditionsDescription].title;
+    currentIconElement.innerHTML = conditions[conditionsDescription].night;
   }
 }
 
 function getCurrentClouds(cloudyConditions) {
   let cloudTitle = cloudyConditions;
   if (cloudTitle === "overcast clouds") {
-    cloudTitle = "Cloudy";
+    currentConditionsElement.innerHTML = "Cloudy";
     currentIconElement.innerHTML = `<i class="fas fa-cloud"></i>`;
-  } else {
-    cloudTitle = "Partly Cloudy";
+  } else if (cloudTitle !== "overcast clouds" && currentHour < 20) {
+    currentConditionsElement.innerHTML = "Partly Cloudy";
     currentIconElement.innerHTML = `<i class="fas fa-cloud-sun"></i>`;
+  } else if (cloudTitle !== "overcast clouds" && currentHour >= 20) {
+    currentConditionsElement.innerHTML = "Partly Cloudy";
+    currentIconElement.innerHTML = `<i class="fas fa-cloud-moon"></i>`;
   }
-  currentConditionsElement.innerHTML = cloudTitle;
 }
