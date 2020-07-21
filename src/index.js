@@ -93,6 +93,8 @@ let todayCurrentTemperature = document.querySelector(
 let windSpeedElement = document.querySelector("#wind-speed");
 let humidityElement = document.querySelector("#humidity");
 let searchField = document.querySelector("input");
+//Set global variable for celsius temperature
+let currentCel = null;
 
 //Default = Calgary, Alberta, Canada
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Calgary&units=${unit}&appid=${apiKey}`;
@@ -100,7 +102,7 @@ function defaultConditions(response) {
   //Capture current temp in Calgary
   let defaultTemperature = response.data.main.temp;
   //Make current temp available for fahrenheit/celsius conversion functions
-  window.currentCel = defaultTemperature;
+  currentCel = defaultTemperature;
   //Round current temp and display in HTML
   let roundedDefaultTemp = Math.round(defaultTemperature);
   todayCurrentTemperature.innerHTML = roundedDefaultTemp;
@@ -111,6 +113,7 @@ function defaultConditions(response) {
   //Capture current Calgary humidity and display in HTML
   let defaultHumidity = response.data.main.humidity;
   humidityElement.innerHTML = defaultHumidity;
+  //Capture and display current weather conditions including an icon
   let calgaryConditions = response.data.weather[0].main;
   if (calgaryConditions !== "Clouds") {
     getCurrentConditions(calgaryConditions);
@@ -137,7 +140,7 @@ function localConditionsFromInput(response) {
     //Capture current temperature for searched city
     let temperatureFromInput = response.data.main.temp;
     //Make current temp available to fahrenheit/celsius conversion functions
-    window.currentCel = temperatureFromInput;
+    currentCel = temperatureFromInput;
     //Round the current temp and display in HTML
     let roundedTempFromInput = Math.round(temperatureFromInput);
     todayCurrentTemperature.innerHTML = roundedTempFromInput;
@@ -148,6 +151,7 @@ function localConditionsFromInput(response) {
     //Capture current humidity for searched city and display in HTML
     let humidity = response.data.main.humidity;
     humidityElement.innerHTML = humidity;
+    //Capture current weather conditions and display including icon
     let conditionsFromInput = response.data.weather[0].main;
     if (conditionsFromInput !== "Clouds") {
       getCurrentConditions(conditionsFromInput);
@@ -189,7 +193,7 @@ function getLocalConditions(response) {
   //Capture local temperature
   let localTemperature = response.data.main.temp;
   //Make local temp available to fahrenheit/celsius conversion functions
-  window.currentCel = localTemperature;
+  currentCel = localTemperature;
   //Round local temp and display in HTML
   let roundedLocalTemp = Math.round(localTemperature);
   todayCurrentTemperature.innerHTML = roundedLocalTemp;
@@ -206,6 +210,7 @@ function getLocalConditions(response) {
   //Capture local country from API response and display in HTML
   let localCountry = response.data.sys.country;
   provinceCity.innerHTML = localCountry;
+  //Capture local weather conditions and display including icon
   let localConditions = response.data.weather[0].main;
   if (localConditions !== "Clouds") {
     getCurrentConditions(localConditions);
@@ -281,11 +286,8 @@ function forecastTempToCelsius() {
 }
 //Convert all C to F
 function convertToFahrenheit() {
-  let currentCel = window.currentCel;
-  let currentFar = currentCel * 1.8 + 32;
-  let roundedFar = Math.round(currentFar);
-  window.currentFar = currentFar;
-  todayCurrentTemperature.innerHTML = roundedFar;
+  let currentFar = Math.round(currentCel * 1.8 + 32);
+  todayCurrentTemperature.innerHTML = currentFar;
   fahrenheit.innerHTML = "<strong> F </strong>";
   celsius.innerHTML = "C";
   forecastUnitToFahrenheit();
@@ -293,10 +295,7 @@ function convertToFahrenheit() {
 }
 //Convert all F to C
 function convertToCelsius() {
-  let currentFar = window.currentFar;
-  let currentCel = (currentFar - 32) / 1.8;
-  let roundedCel = Math.round(currentCel);
-  todayCurrentTemperature.innerHTML = roundedCel;
+  todayCurrentTemperature.innerHTML = Math.round(currentCel);
   celsius.innerHTML = "<strong> C </strong>";
   fahrenheit.innerHTML = "F";
   forecastUnitToCelsius();
