@@ -1,41 +1,57 @@
 //GET DATE TIME INFO
-//Get date info
-let currentInfo = new Date();
-let currentHour = currentInfo.getHours();
-currentHourAmPm = currentHour;
-//Get day of the week & time in am/pm
-function insertDayTime() {
-  //Day of the week
-  let weekDays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  let currentWeekDay = weekDays[currentInfo.getDay()];
+//Set global variable for timestamp - used for date/time info
+let timestamp = null;
+//Set global variable for current day and date - used for date/time info and forecast day of the week
+let currentDay = null;
+//Set global variable for current hour - used for date/time info and for weather icon
+let currentHour = null;
+//Day of the week
+let weekDays = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+//Current month
+let calendarMonths = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+function getDateTime(timestamp) {
+  //Get date info
+  let currentInfo = new Date(timestamp);
+  currentDay = currentInfo.getDay();
+  let currentWeekDay = weekDays[currentDay];
+  //Get current time info
+  currentHour = currentInfo.getHours();
+  currentHourAmPm = currentHour;
   //Current hours
   if (currentHourAmPm === 0) {
     currentHourAmPm = 12;
-  }
-  if (currentHourAmPm > 12) {
+  } else if (currentHourAmPm > 12) {
     currentHourAmPm = currentHourAmPm - 12;
   }
   //Current minutes
   let currentMinute = currentInfo.getMinutes();
-  currentMinute = currentMinute.toString();
-  if (currentMinute.length === 1) {
+  if (currentMinute < 10) {
     currentMinute = `0${currentMinute}`;
   }
   //Change day of the week and time
   let currentDayOfTheWeekTime = document.querySelector("#day-of-the-week-time");
   currentDayOfTheWeekTime.innerHTML = `${currentWeekDay} ${currentHourAmPm}:${currentMinute}`;
-}
-
-//Get am or pm
-function insertAmPm(currentHourAmPm) {
   //am or pm
   let amPM = document.querySelector("#am-pm");
   if ((currentHourAmPm) => 12) {
@@ -43,27 +59,9 @@ function insertAmPm(currentHourAmPm) {
   } else {
     amPM.innerHTML = "am";
   }
-}
-
-//Get month, date, year
-function insertDate() {
   //Current month
-  let calendarMonths = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
   let currentMonth = calendarMonths[currentInfo.getMonth()];
-  //Current Date
+  //Current date
   let currentDate = currentInfo.getDate();
   //Current Year
   let currentYear = currentInfo.getFullYear();
@@ -71,14 +69,6 @@ function insertDate() {
   let currentMonthDateYear = document.querySelector("#month-date-year");
   currentMonthDateYear.innerHTML = `| ${currentMonth} ${currentDate}, ${currentYear}`;
 }
-
-//insert current day, time, date information
-function getCurrentDateInfo() {
-  insertDayTime();
-  insertAmPm();
-  insertDate();
-}
-getCurrentDateInfo();
 
 //GET LIVE WEATHER DATA
 //Set variables for API url
@@ -99,6 +89,9 @@ let currentCel = null;
 //Default = Calgary, Alberta, Canada
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Calgary&units=${unit}&appid=${apiKey}`;
 function defaultConditions(response) {
+  //Capture date/time info
+  timestamp = response.data.dt * 1000;
+  getDateTime(timestamp);
   //Capture current temp in Calgary
   let defaultTemperature = response.data.main.temp;
   //Make current temp available for fahrenheit/celsius conversion functions
@@ -130,6 +123,9 @@ function localConditionsFromInput(response) {
   let status = response.status;
   //If get request returns an ok response
   if (status === 200) {
+    //Capture date/time info
+    timestamp = response.data.dt * 1000;
+    getDateTime(timestamp);
     //Capture city name and change html
     let cityResponse = response.data.name;
     h1.innerHTML = cityResponse;
@@ -190,6 +186,9 @@ form.addEventListener("submit", go);
 //Geolocation
 function getLocalConditions(response) {
   convertToCelsius();
+  //Capture date/time info
+  timestamp = response.data.dt * 1000;
+  getDateTime(timestamp);
   //Capture local temperature
   let localTemperature = response.data.main.temp;
   //Make local temp available to fahrenheit/celsius conversion functions
