@@ -1,8 +1,6 @@
 //GET DATE TIME INFO
 //Set global variable for timestamp - used for date/time info
 let timestamp = null;
-//Set global variable for current day and date - used for date/time info and forecast day of the week
-let currentDay = null;
 //Set global variable for current hour - used for date/time info and for weather icon
 let currentHour = null;
 //Day of the week
@@ -33,7 +31,7 @@ let calendarMonths = [
 function getDateTime(timestamp) {
   //Get date info
   let currentInfo = new Date(timestamp);
-  currentDay = currentInfo.getDay();
+  let currentDay = currentInfo.getDay();
   let currentWeekDay = weekDays[currentDay];
   //Get current time info
   currentHour = currentInfo.getHours();
@@ -114,6 +112,10 @@ function defaultConditions(response) {
     let calgaryClouds = response.data.weather[0].description;
     getCurrentClouds(calgaryClouds);
   }
+  //Get latitude and longitude and call forecast api function
+  lat = response.data.coord.lat;
+  lon = response.data.coord.lon;
+  createForecastUrl(lat, lon);
 }
 //Send Get request to API for Calgary then run function to capture info
 axios.get(apiUrl).then(defaultConditions);
@@ -155,6 +157,10 @@ function localConditionsFromInput(response) {
       let cloudsFromInput = response.data.weather[0].description;
       getCurrentClouds(cloudsFromInput);
     }
+    //Get latitude and longitude and call forecast api function
+    lat = response.data.coord.lat;
+    lon = response.data.coord.lon;
+    createForecastUrl(lat, lon);
   }
 }
 //Capture errors
@@ -220,8 +226,10 @@ function getLocalConditions(response) {
 }
 //Capture local coordinates and define API url
 function getLocation(position) {
+  //Get latitude and longitude and call forecast api function
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
+  createForecastUrl(lat, lon);
   let apiUrlGeolocation = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${unit}&appid=${apiKey}`;
   axios.get(apiUrlGeolocation).then(getLocalConditions);
 }
@@ -409,4 +417,51 @@ function getCurrentClouds(cloudyConditions) {
     currentConditionsElement.innerHTML = "Partly Cloudy";
     currentIconElement.innerHTML = `<i class="fas fa-cloud-moon"></i>`;
   }
+}
+
+//FORECAST
+//Select forecast on HTML
+let forecastElement = document.querySelector("#forecast");
+let forecastIconElement = document.querySelector(".forecast-icon");
+function getForecast(response) {
+  forecastElement.innerHTML = null;
+  for (let index = 1; index < 6; index++) {
+    let forecast = response.data.daily[index];
+    let forecastTimestamp = forecast.dt * 1000;
+    let forecastInfo = new Date(forecastTimestamp);
+    let forecastDay = forecastInfo.getDay();
+    let forecastWeekDay = weekDays[forecastDay];
+    let forecastMonth = calendarMonths[forecastInfo.getMonth()];
+    let forecastDate = forecastInfo.getDate();
+    let forecastYear = forecastInfo.getFullYear();
+    let forecastTemp = forecast.temp.max;
+    forecastElement.innerHTML += `
+     <div class="col forecast-day">
+                  <h2 class="forecast-day-of-the-week">
+                    ${forecastWeekDay}
+                  </h2>
+                  <h3 class="forecast-date">
+                    ${forecastMonth} ${forecastDate}, ${forecastYear}
+                  </h3>
+                  <div class="forecast-temp">
+                    <div class="forecast-icon">
+                      
+                    </div>
+                    <div class="five-temp">
+                      <span id="day-1-temp">
+                        ${Math.round(forecastTemp)}°
+                      </span>
+                      <span class="five-unit" id="day-1-unit">
+                        C
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                `;
+  }
+}
+function createForecastUrl(lat, lon) {
+  let forecastApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${unit}&
+exclude=minutely,hourly&appid=${apiKey}`;
+  axios.get(forecastApiUrl).then(getForecast);
 }
