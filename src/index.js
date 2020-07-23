@@ -273,84 +273,98 @@ let conditions = {
     icon: `<i class="fas fa-bolt"></i>`,
     night: `<i class="fas fa-bolt"></i>`,
     pokemon: "Water, Electric, Bug",
+    pokemonImage: null,
   },
   Drizzle: {
     title: "Drizzle",
     icon: `<i class="fas fa-cloud-rain"></i>`,
     night: `<i class="fas fa-cloud-rain"></i>`,
     pokemon: "Water, Electric, Bug",
+    pokemonImage: null,
   },
   Rain: {
     title: "Rainy",
     icon: `<i class="fas fa-cloud-showers-heavy"></i>`,
     night: `<i class="fas fa-cloud-showers-heavy"></i>`,
     pokemon: "Water, Electric, Bug",
+    pokemonImage: null,
   },
   Snow: {
     title: "Snowing",
     icon: `<i class="far fa-snowflake"></i>`,
     night: `<i class="far fa-snowflake"></i>`,
     pokemon: "Snow, Steel",
+    pokemonImage: null,
   },
   Clear: {
     title: "Clear Sky",
     icon: `<i class="fas fa-sun"></i>`,
     night: `<i class="fas fa-moon"></i>`,
     pokemon: "Grass, Ground, Fire",
+    pokemonImage: null,
   },
   Mist: {
     title: "Misty",
     icon: `<i class="fas fa-umbrella"></i>`,
     night: `<i class="fas fa-umbrella"></i>`,
     pokemon: "Water, Electric, Bug",
+    pokemonImage: null,
   },
   Smoke: {
     title: "Smokey",
     icon: `<i class="fas fa-smog"></i>`,
     night: `<i class="fas fa-smog"></i>`,
     pokemon: "Fairy, Fighting, Poison",
+    pokemonImage: null,
   },
   Haze: {
     title: "Haze",
     icon: `<i class="fas fa-smog"></i>`,
     night: `<i class="fas fa-smog"></i>`,
     pokemon: "Fairy, Fighting, Poison",
+    pokemonImage: null,
   },
   Dust: {
     title: "Dust",
     icon: `<i class="fas fa-smog"></i>`,
     night: `<i class="fas fa-smog"></i>`,
     pokemon: "Fairy, Fighting, Poison",
+    pokemonImage: null,
   },
   Fog: {
     title: "Fog",
     icon: `<i class="fas fa-smog"></i>`,
     night: `<i class="fas fa-smog"></i>`,
     pokemon: "Dark, Ghost",
+    pokemonImage: null,
   },
   Sand: {
     title: "Sand",
     icon: `<i class="fas fa-exclamation"></i>`,
     night: `<i class="fas fa-exclamation"></i>`,
     pokemon: "Fairy, Fighting, Poison",
+    pokemonImage: null,
   },
   Ash: {
     title: "Volcanic Ash",
     icon: `<i class="fas fa-exclamation"></i>`,
     night: `<i class="fas fa-exclamation"></i>`,
     pokemon: "Fairy, Fighting, Poison",
+    pokemonImage: null,
   },
   Squall: {
     title: "Squall",
     icon: `<i class="fas fa-wind"></i>`,
     night: `<i class="fas fa-wind"></i>`,
     pokemon: "Water, Electric, Bug",
+    pokemonImage: null,
   },
   Tornado: {
     title: "Tornado",
     icon: `<i class="fas fa-exclamation"></i>`,
     night: `<i class="fas fa-exclamation"></i>`,
     pokemon: "Water, Electric, Bug",
+    pokemonImage: null,
   },
 };
 
@@ -359,6 +373,7 @@ let currentConditionsElement = document.querySelector(
 );
 let currentIconElement = document.querySelector("#current-icon");
 let pokemonTypeElement = document.querySelector("#pokemon-type");
+let pokemonImageElement = document.querySelector("#pokemon-image");
 
 function getCurrentConditions(conditionsDescription) {
   if (conditions[conditionsDescription] !== undefined && currentHour < 20) {
@@ -366,6 +381,8 @@ function getCurrentConditions(conditionsDescription) {
       conditions[conditionsDescription].title;
     currentIconElement.innerHTML = conditions[conditionsDescription].icon;
     pokemonTypeElement.innerHTML = conditions[conditionsDescription].pokemon;
+    pokemonImageElement.innerHTML =
+      conditions[conditionsDescription].pokemonImage;
   } else if (
     conditions[conditionsDescription] !== undefined &&
     currentHour >= 20
@@ -374,6 +391,8 @@ function getCurrentConditions(conditionsDescription) {
       conditions[conditionsDescription].title;
     currentIconElement.innerHTML = conditions[conditionsDescription].night;
     pokemonTypeElement.innerHTML = conditions[conditionsDescription].pokemon;
+    pokemonImageElement.innerHTML =
+      conditions[conditionsDescription].pokemonImage;
   }
 }
 
@@ -383,14 +402,19 @@ function getCurrentClouds(cloudyConditions) {
     currentConditionsElement.innerHTML = "Cloudy";
     currentIconElement.innerHTML = `<i class="fas fa-cloud"></i>`;
     pokemonTypeElement.innerHTML = "Fairy, Fighting, Poison";
+    pokemonImageElement.innerHTML = null;
   } else if (cloudTitle !== "overcast clouds" && currentHour < 20) {
     currentConditionsElement.innerHTML = "Partly Cloudy";
     currentIconElement.innerHTML = `<i class="fas fa-cloud-sun"></i>`;
     pokemonTypeElement.innerHTML = "Normal, Rock";
+    pokemonImageElement.innerHTML = `<img src="images/normal.png" alt="Snorlax" />
+                  <img src="images/rock.png" alt="Rhyperior" />`;
   } else if (cloudTitle !== "overcast clouds" && currentHour >= 20) {
     currentConditionsElement.innerHTML = "Partly Cloudy";
     currentIconElement.innerHTML = `<i class="fas fa-cloud-moon"></i>`;
     pokemonTypeElement.innerHTML = "Normal, Rock";
+    pokemonImageElement.innerHTML = `<img src="images/normal.png" alt="Snorlax" />
+                  <img src="images/rock.png" alt="Rhyperior" />`;
   }
 }
 
