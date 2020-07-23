@@ -272,70 +272,85 @@ let conditions = {
     title: "Thunderstorms",
     icon: `<i class="fas fa-bolt"></i>`,
     night: `<i class="fas fa-bolt"></i>`,
+    pokemon: "Water, Electric, Bug",
   },
   Drizzle: {
     title: "Drizzle",
     icon: `<i class="fas fa-cloud-rain"></i>`,
     night: `<i class="fas fa-cloud-rain"></i>`,
+    pokemon: "Water, Electric, Bug",
   },
   Rain: {
     title: "Rainy",
     icon: `<i class="fas fa-cloud-showers-heavy"></i>`,
     night: `<i class="fas fa-cloud-showers-heavy"></i>`,
+    pokemon: "Water, Electric, Bug",
   },
   Snow: {
     title: "Snowing",
     icon: `<i class="far fa-snowflake"></i>`,
     night: `<i class="far fa-snowflake"></i>`,
+    pokemon: "Snow, Steel",
   },
   Clear: {
     title: "Clear Sky",
     icon: `<i class="fas fa-sun"></i>`,
     night: `<i class="fas fa-moon"></i>`,
+    pokemon: "Grass, Ground, Fire",
   },
   Mist: {
     title: "Misty",
     icon: `<i class="fas fa-umbrella"></i>`,
     night: `<i class="fas fa-umbrella"></i>`,
+    pokemon: "Water, Electric, Bug",
   },
   Smoke: {
     title: "Smokey",
     icon: `<i class="fas fa-smog"></i>`,
     night: `<i class="fas fa-smog"></i>`,
+    pokemon: "Fairy, Fighting, Poison",
   },
   Haze: {
     title: "Haze",
     icon: `<i class="fas fa-smog"></i>`,
+    night: `<i class="fas fa-smog"></i>`,
+    pokemon: "Fairy, Fighting, Poison",
   },
   Dust: {
     title: "Dust",
     icon: `<i class="fas fa-smog"></i>`,
     night: `<i class="fas fa-smog"></i>`,
+    pokemon: "Fairy, Fighting, Poison",
   },
   Fog: {
     title: "Fog",
     icon: `<i class="fas fa-smog"></i>`,
     night: `<i class="fas fa-smog"></i>`,
+    pokemon: "Dark, Ghost",
   },
   Sand: {
     title: "Sand",
     icon: `<i class="fas fa-exclamation"></i>`,
     night: `<i class="fas fa-exclamation"></i>`,
+    pokemon: "Fairy, Fighting, Poison",
   },
   Ash: {
     title: "Volcanic Ash",
     icon: `<i class="fas fa-exclamation"></i>`,
     night: `<i class="fas fa-exclamation"></i>`,
+    pokemon: "Fairy, Fighting, Poison",
   },
   Squall: {
     title: "Squall",
     icon: `<i class="fas fa-wind"></i>`,
     night: `<i class="fas fa-wind"></i>`,
+    pokemon: "Water, Electric, Bug",
   },
   Tornado: {
     title: "Tornado",
     icon: `<i class="fas fa-exclamation"></i>`,
     night: `<i class="fas fa-exclamation"></i>`,
+    pokemon: "Water, Electric, Bug",
   },
 };
 
@@ -343,12 +358,14 @@ let currentConditionsElement = document.querySelector(
   "#current-weather-conditions"
 );
 let currentIconElement = document.querySelector("#current-icon");
+let pokemonTypeElement = document.querySelector("#pokemon-type");
 
 function getCurrentConditions(conditionsDescription) {
   if (conditions[conditionsDescription] !== undefined && currentHour < 20) {
     currentConditionsElement.innerHTML =
       conditions[conditionsDescription].title;
     currentIconElement.innerHTML = conditions[conditionsDescription].icon;
+    pokemonTypeElement.innerHTML = conditions[conditionsDescription].pokemon;
   } else if (
     conditions[conditionsDescription] !== undefined &&
     currentHour >= 20
@@ -356,6 +373,7 @@ function getCurrentConditions(conditionsDescription) {
     currentConditionsElement.innerHTML =
       conditions[conditionsDescription].title;
     currentIconElement.innerHTML = conditions[conditionsDescription].night;
+    pokemonTypeElement.innerHTML = conditions[conditionsDescription].pokemon;
   }
 }
 
@@ -364,12 +382,15 @@ function getCurrentClouds(cloudyConditions) {
   if (cloudTitle === "overcast clouds") {
     currentConditionsElement.innerHTML = "Cloudy";
     currentIconElement.innerHTML = `<i class="fas fa-cloud"></i>`;
+    pokemonTypeElement.innerHTML = "Fairy, Fighting, Poison";
   } else if (cloudTitle !== "overcast clouds" && currentHour < 20) {
     currentConditionsElement.innerHTML = "Partly Cloudy";
     currentIconElement.innerHTML = `<i class="fas fa-cloud-sun"></i>`;
+    pokemonTypeElement.innerHTML = "Normal, Rock";
   } else if (cloudTitle !== "overcast clouds" && currentHour >= 20) {
     currentConditionsElement.innerHTML = "Partly Cloudy";
     currentIconElement.innerHTML = `<i class="fas fa-cloud-moon"></i>`;
+    pokemonTypeElement.innerHTML = "Normal, Rock";
   }
 }
 
