@@ -249,64 +249,18 @@ currentLocationButton.addEventListener("click", useCurrentLocation);
 //Make HTML elements variables
 let celsius = document.querySelector("#celsius");
 let fahrenheit = document.querySelector("#fahrenheit");
-let day1temp = document.querySelector("#day-1-temp");
-let day1Unit = document.querySelector("#day-1-unit");
-let day2temp = document.querySelector("#day-2-temp");
-let day2Unit = document.querySelector("#day-2-unit");
-let day3temp = document.querySelector("#day-3-temp");
-let day3Unit = document.querySelector("#day-3-unit");
-let day4temp = document.querySelector("#day-4-temp");
-let day4Unit = document.querySelector("#day-4-unit");
-let day5temp = document.querySelector("#day-5-temp");
-let day5Unit = document.querySelector("#day-5-unit");
-//Change each C to F
-function forecastUnitToFahrenheit() {
-  day1Unit.innerHTML = "F";
-  day2Unit.innerHTML = "F";
-  day3Unit.innerHTML = "F";
-  day4Unit.innerHTML = "F";
-  day5Unit.innerHTML = "F";
-}
-//Change placeholder temps to F
-function forecastTempToFahrenheit() {
-  day1temp.innerHTML = "70°";
-  day2temp.innerHTML = "72°";
-  day3temp.innerHTML = "66°";
-  day4temp.innerHTML = "59°";
-  day5temp.innerHTML = "68°";
-}
-//Change each F to C
-function forecastUnitToCelsius() {
-  day1Unit.innerHTML = "C";
-  day2Unit.innerHTML = "C";
-  day3Unit.innerHTML = "C";
-  day4Unit.innerHTML = "C";
-  day5Unit.innerHTML = "C";
-}
-//Change placeholder temps to C
-function forecastTempToCelsius() {
-  day1temp.innerHTML = "21°";
-  day2temp.innerHTML = "22°";
-  day3temp.innerHTML = "19°";
-  day4temp.innerHTML = "15°";
-  day5temp.innerHTML = "20°";
-}
-//Convert all C to F
+//Convert C to F
 function convertToFahrenheit() {
   let currentFar = Math.round(currentCel * 1.8 + 32);
   todayCurrentTemperature.innerHTML = currentFar;
   fahrenheit.innerHTML = "<strong> F </strong>";
   celsius.innerHTML = "C";
-  forecastUnitToFahrenheit();
-  forecastTempToFahrenheit();
 }
-//Convert all F to C
+//Convert F to C
 function convertToCelsius() {
   todayCurrentTemperature.innerHTML = Math.round(currentCel);
   celsius.innerHTML = "<strong> C </strong>";
   fahrenheit.innerHTML = "F";
-  forecastUnitToCelsius();
-  forecastTempToCelsius();
 }
 //On click change between Fahrenheit and Celsius
 fahrenheit.addEventListener("click", convertToFahrenheit);
@@ -453,11 +407,9 @@ function getForecast(response) {
     let forecastIcon = null;
     if (forecastConditions !== "Clouds") {
       forecastIcon = getForecastConditions(forecastConditions);
-      console.log(forecastIcon);
     } else {
       let forecastClouds = forecast.weather[0].description;
       forecastIcon = getForecastClouds(forecastClouds);
-      console.log(forecastIcon);
     }
     forecastElement.innerHTML += `
                 <div class="col forecast-day">
