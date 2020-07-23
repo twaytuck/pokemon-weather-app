@@ -402,19 +402,20 @@ function getCurrentClouds(cloudyConditions) {
     currentConditionsElement.innerHTML = "Cloudy";
     currentIconElement.innerHTML = `<i class="fas fa-cloud"></i>`;
     pokemonTypeElement.innerHTML = "Fairy, Fighting, Poison";
-    pokemonImageElement.innerHTML = null;
+    pokemonImageElement.innerHTML = `<img  src="images/fairy.png" alt="Gardevoir class="pokemon-image" /> 
+    <img src="images/fighting.png" alt="Machamp" class="pokemon-image" />`;
   } else if (cloudTitle !== "overcast clouds" && currentHour < 20) {
     currentConditionsElement.innerHTML = "Partly Cloudy";
     currentIconElement.innerHTML = `<i class="fas fa-cloud-sun"></i>`;
     pokemonTypeElement.innerHTML = "Normal, Rock";
-    pokemonImageElement.innerHTML = `<img src="images/normal.png" alt="Snorlax" />
-                  <img src="images/rock.png" alt="Rhyperior" />`;
+    pokemonImageElement.innerHTML = `<img src="images/normal.png" alt="Snorlax" class="pokemon-image" />
+                  <img src="images/rock.png" alt="Rhyperior" class="pokemon-image" />`;
   } else if (cloudTitle !== "overcast clouds" && currentHour >= 20) {
     currentConditionsElement.innerHTML = "Partly Cloudy";
     currentIconElement.innerHTML = `<i class="fas fa-cloud-moon"></i>`;
     pokemonTypeElement.innerHTML = "Normal, Rock";
-    pokemonImageElement.innerHTML = `<img src="images/normal.png" alt="Snorlax" />
-                  <img src="images/rock.png" alt="Rhyperior" />`;
+    pokemonImageElement.innerHTML = `<img src="images/normal.png" alt="Snorlax" class="pokemon-image" />
+                  <img src="images/rock.png" alt="Rhyperior" class="pokemon-image" />`;
   }
 }
 
