@@ -1,6 +1,7 @@
 body {
   font-family: "Roboto", sans-serif;
   background: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
+  background-attachment: fixed;
 }
 label {
   display: block;
