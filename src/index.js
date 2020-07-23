@@ -326,8 +326,8 @@ let conditions = {
   },
   Rain: {
     title: "Rainy",
-    icon: `<i class="fas fa-cloud-showers-heavy" />`,
-    night: `<i class="fas fa-cloud-showers-heavy" />`,
+    icon: `<i class="fas fa-cloud-showers-heavy"></i>`,
+    night: `<i class="fas fa-cloud-showers-heavy"></i>`,
   },
   Snow: {
     title: "Snowing",
@@ -423,6 +423,20 @@ function getCurrentClouds(cloudyConditions) {
 //Select forecast on HTML
 let forecastElement = document.querySelector("#forecast");
 let forecastIconElement = document.querySelector(".forecast-icon");
+
+//Change forecast icons
+function getForecastConditions(forecastConditions) {
+  if (conditions[forecastConditions] !== undefined) {
+    return conditions[forecastConditions].icon;
+  }
+}
+function getForecastClouds(forecastClouds) {
+  if (forecastClouds === "overcast clouds") {
+    return `<i class="fas fa-cloud"></i>`;
+  } else if (forecastClouds !== "overcast clouds") {
+    return `<i class="fas fa-cloud-sun"></i>`;
+  }
+}
 function getForecast(response) {
   forecastElement.innerHTML = null;
   for (let index = 1; index < 6; index++) {
@@ -435,26 +449,32 @@ function getForecast(response) {
     let forecastDate = forecastInfo.getDate();
     let forecastYear = forecastInfo.getFullYear();
     let forecastTemp = forecast.temp.max;
+    let forecastConditions = forecast.weather[0].main;
+    let forecastIcon = null;
+    if (forecastConditions !== "Clouds") {
+      forecastIcon = getForecastConditions(forecastConditions);
+      console.log(forecastIcon);
+    } else {
+      let forecastClouds = forecast.weather[0].description;
+      forecastIcon = getForecastClouds(forecastClouds);
+      console.log(forecastIcon);
+    }
     forecastElement.innerHTML += `
-     <div class="col forecast-day">
+                <div class="col forecast-day">
                   <h2 class="forecast-day-of-the-week">
-                    ${forecastWeekDay}
+                  ${forecastWeekDay}
                   </h2>
                   <h3 class="forecast-date">
-                    ${forecastMonth} ${forecastDate}, ${forecastYear}
+                  ${forecastMonth} ${forecastDate}, ${forecastYear}
                   </h3>
-                  <div class="forecast-temp">
-                    <div class="forecast-icon">
-                      
-                    </div>
-                    <div class="five-temp">
-                      <span id="day-1-temp">
-                        ${Math.round(forecastTemp)}°
-                      </span>
-                      <span class="five-unit" id="day-1-unit">
-                        C
-                      </span>
-                    </div>
+                  <div class="forecast-icon">
+                  ${forecastIcon}
+                  </div>
+                  <div class="five-temp">
+                    <span id="day-5-temp">
+                      ${Math.round(forecastTemp)}°
+                    </span>
+                    <span class="five-unit" id="day-5-unit"> C </span>
                   </div>
                 </div>
                 `;
