@@ -253,15 +253,23 @@ let fahrenheit = document.querySelector("#fahrenheit");
 function convertToFahrenheit() {
   let currentFar = Math.round(currentCel * 1.8 + 32);
   todayCurrentTemperature.innerHTML = currentFar;
-  fahrenheit.innerHTML = "<strong> F </strong>";
-  celsius.innerHTML = "C";
+  //Apply "active" CSS to fahrenheit and "inactive" CSS to celsius
+  fahrenheit.classList.add("active");
+  fahrenheit.classList.remove("inactive");
+  celsius.classList.remove("active");
+  celsius.classList.add("inactive");
+  //Change forecast info to fahrenheit
   axios.get(forecastApiUrl).then(getFarForecast);
 }
 //Convert F to C
 function convertToCelsius() {
   todayCurrentTemperature.innerHTML = Math.round(currentCel);
-  celsius.innerHTML = "<strong> C </strong>";
-  fahrenheit.innerHTML = "F";
+  //Apply "inactive" CSS to fahrenheit and "active" CSS to celsius
+  fahrenheit.classList.add("inactive");
+  fahrenheit.classList.remove("active");
+  celsius.classList.remove("inactive");
+  celsius.classList.add("active");
+  //Change forecast info to celsius
   axios.get(forecastApiUrl).then(getForecast);
 }
 //On click change between Fahrenheit and Celsius

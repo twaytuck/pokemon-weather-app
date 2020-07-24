@@ -165,8 +165,10 @@ img:hover {
   color: #240ece;
   font-weight: 400;
 }
-.celsius:hover,
-.fahrenheit:hover {
+.active {
+  font-weight: 600;
+}
+.inactive:hover {
   cursor: pointer;
   font-weight: 600;
   transition: all 200ms ease-in-out;
