@@ -255,12 +255,14 @@ function convertToFahrenheit() {
   todayCurrentTemperature.innerHTML = currentFar;
   fahrenheit.innerHTML = "<strong> F </strong>";
   celsius.innerHTML = "C";
+  axios.get(forecastApiUrl).then(getFarForecast);
 }
 //Convert F to C
 function convertToCelsius() {
   todayCurrentTemperature.innerHTML = Math.round(currentCel);
   celsius.innerHTML = "<strong> C </strong>";
   fahrenheit.innerHTML = "F";
+  axios.get(forecastApiUrl).then(getForecast);
 }
 //On click change between Fahrenheit and Celsius
 fahrenheit.addEventListener("click", convertToFahrenheit);
@@ -420,6 +422,7 @@ function getCurrentClouds(cloudyConditions) {
 }
 
 //FORECAST
+let forecastApiUrl = null;
 //Select forecast on HTML
 let forecastElement = document.querySelector("#forecast");
 let forecastIconElement = document.querySelector(".forecast-icon");
@@ -479,7 +482,50 @@ function getForecast(response) {
   }
 }
 function createForecastUrl(lat, lon) {
-  let forecastApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${unit}&
+  forecastApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${unit}&
 exclude=minutely,hourly&appid=${apiKey}`;
   axios.get(forecastApiUrl).then(getForecast);
+}
+
+function getFarForecast(response) {
+  forecastElement.innerHTML = null;
+  for (let index = 1; index < 6; index++) {
+    let forecast = response.data.daily[index];
+    let forecastTimestamp = forecast.dt * 1000;
+    let forecastInfo = new Date(forecastTimestamp);
+    let forecastDay = forecastInfo.getDay();
+    let forecastWeekDay = weekDays[forecastDay];
+    let forecastMonth = calendarMonths[forecastInfo.getMonth()];
+    let forecastDate = forecastInfo.getDate();
+    let forecastYear = forecastInfo.getFullYear();
+    let forecastTemp = forecast.temp.max;
+    let farForecastTemp = forecastTemp * 1.8 + 32;
+    let forecastConditions = forecast.weather[0].main;
+    let forecastIcon = null;
+    if (forecastConditions !== "Clouds") {
+      forecastIcon = getForecastConditions(forecastConditions);
+    } else {
+      let forecastClouds = forecast.weather[0].description;
+      forecastIcon = getForecastClouds(forecastClouds);
+    }
+    forecastElement.innerHTML += `
+                <div class="col forecast-day">
+                  <h2 class="forecast-day-of-the-week">
+                  ${forecastWeekDay}
+                  </h2>
+                  <h3 class="forecast-date">
+                  ${forecastMonth} ${forecastDate}, ${forecastYear}
+                  </h3>
+                  <div class="forecast-icon">
+                  ${forecastIcon}
+                  </div>
+                  <div class="five-temp">
+                    <span id="day-5-temp">
+                      ${Math.round(farForecastTemp)}°
+                    </span>
+                    <span class="five-unit" id="day-5-unit"> C </span>
+                  </div>
+                </div>
+                `;
+  }
 }
