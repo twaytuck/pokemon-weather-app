@@ -100,6 +100,9 @@ function defaultConditions(response) {
   //Capture current Calgary windspeed, round it, convert it to km/h, and display in HTML
   let defaultWindSpeed = response.data.wind.speed;
   defaultWindSpeed = Math.round(defaultWindSpeed * 3.6);
+  if (defaultWindSpeed > 24) {
+    isWindy();
+  }
   windSpeedElement.innerHTML = defaultWindSpeed;
   //Capture current Calgary humidity and display in HTML
   let defaultHumidity = response.data.main.humidity;
@@ -145,6 +148,9 @@ function localConditionsFromInput(response) {
     //Capture current windspeed for searched city, round it, display in HTML
     let windSpeedFromInput = response.data.wind.speed;
     windSpeedFromInput = Math.round(windSpeedFromInput * 3.6);
+    if (windSpeedFromInput > 24) {
+      isWindy();
+    }
     windSpeedElement.innerHTML = windSpeedFromInput;
     //Capture current humidity for searched city and display in HTML
     let humidity = response.data.main.humidity;
@@ -208,6 +214,9 @@ function getLocalConditions(response) {
   //Capture local windspeed, round, and display in HTML
   let localWindspeed = response.data.wind.speed;
   localWindspeed = Math.round(localWindspeed * 3.6);
+  if (localWindspeed > 24) {
+    isWindy();
+  }
   windSpeedElement.innerHTML = localWindspeed;
   //Capture local city name from API response and display in HTML
   let localCity = response.data.name;
@@ -536,4 +545,30 @@ function getFarForecast(response) {
                 </div>
                 `;
   }
+}
+
+//Windy Weather-Boosted Pokemon
+function isWindy() {
+  let tooltipStyles = window.document.styleSheets[0];
+  let pokemonTooltipElement = document.querySelector(".pokemon-tooltip");
+  pokemonTooltipElement.innerHTML = `
+                    <i class="fas fa-exclamation-circle" id="windy-alert"></i>
+                  <span class="pokemon-tooltip-text">
+                    Your in-game weather may indicate "Windy." Weather-boosted
+                    pokemon in windy conditions are: Dragon, Flying,
+                    Psychic.</span
+                  >
+  `;
+  tooltipStyles.insertRule(
+    ".pokemon-tooltip { position: relative; display: inline - block;}",
+    0
+  );
+  tooltipStyles.insertRule(
+    ".pokemon-tooltip-text {visibility: hidden; width: 300px; background-color: rgba(252, 252, 252, 0.9); color: #757575; font-size: 14px; font-weight: 300; text-shadow: none; line-height: 15px; text-align: center; padding: 5px 0; border: solid #757575 1px; border-radius: 6px; position: absolute; z-index: 1; bottom: 100 %; right: 50 %; margin-right: -20px; opacity: 0; transition: linear 100ms;}",
+    0
+  );
+  tooltipStyles.insertRule(
+    ".pokemon-tooltip:hover .pokemon-tooltip-text {visibility: visible; opacity: 1;",
+    0
+  );
 }
