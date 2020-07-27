@@ -100,6 +100,7 @@ function defaultConditions(response) {
   //Capture current Calgary windspeed, round it, convert it to km/h, and display in HTML
   let defaultWindSpeed = response.data.wind.speed;
   defaultWindSpeed = Math.round(defaultWindSpeed * 3.6);
+  defaultWindSpeed = 50;
   if (defaultWindSpeed > 24) {
     isWindy();
   }
@@ -150,6 +151,8 @@ function localConditionsFromInput(response) {
     windSpeedFromInput = Math.round(windSpeedFromInput * 3.6);
     if (windSpeedFromInput > 24) {
       isWindy();
+    } else {
+      isNotWindy();
     }
     windSpeedElement.innerHTML = windSpeedFromInput;
     //Capture current humidity for searched city and display in HTML
@@ -216,6 +219,8 @@ function getLocalConditions(response) {
   localWindspeed = Math.round(localWindspeed * 3.6);
   if (localWindspeed > 24) {
     isWindy();
+  } else {
+    isNotWindy();
   }
   windSpeedElement.innerHTML = localWindspeed;
   //Capture local city name from API response and display in HTML
@@ -548,9 +553,9 @@ function getFarForecast(response) {
 }
 
 //Windy Weather-Boosted Pokemon
+let tooltipStyles = window.document.styleSheets[0];
+let pokemonTooltipElement = document.querySelector(".pokemon-tooltip");
 function isWindy() {
-  let tooltipStyles = window.document.styleSheets[0];
-  let pokemonTooltipElement = document.querySelector(".pokemon-tooltip");
   pokemonTooltipElement.innerHTML = `
                     <i class="fas fa-exclamation-circle" id="windy-alert"></i>
                   <span class="pokemon-tooltip-text">
@@ -568,6 +573,22 @@ function isWindy() {
     0
   );
   tooltipStyles.insertRule(
+    ".pokemon-tooltip:hover .pokemon-tooltip-text {visibility: visible; opacity: 1;",
+    0
+  );
+}
+
+function isNotWindy() {
+  pokemonTooltipElement.innerHTML = null;
+  tooltipStyles.deleteRule(
+    ".pokemon-tooltip { position: relative; display: inline - block;}",
+    0
+  );
+  tooltipStyles.deleteRule(
+    ".pokemon-tooltip-text {visibility: hidden; width: 300px; background-color: rgba(252, 252, 252, 0.9); color: #757575; font-size: 14px; font-weight: 300; text-shadow: none; line-height: 15px; text-align: center; padding: 5px 0; border: solid #757575 1px; border-radius: 6px; position: absolute; z-index: 1; bottom: 100 %; right: 50 %; margin-right: -20px; opacity: 0; transition: linear 100ms;}",
+    0
+  );
+  tooltipStyles.deleteRule(
     ".pokemon-tooltip:hover .pokemon-tooltip-text {visibility: visible; opacity: 1;",
     0
   );
