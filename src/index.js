@@ -296,98 +296,123 @@ let conditions = {
     icon: `<i class="fas fa-bolt"></i>`,
     night: `<i class="fas fa-bolt"></i>`,
     pokemon: "Water, Electric, Bug",
-    pokemonImage: null,
+    pokemonImage: `<img  src="images/water.png" alt="Gyarados" class="pokemon-image" />
+    <img  src="images/electric.png" alt="Zapdos" class="pokemon-image" />
+    <img  src="images/bug.png" alt="Heracross" class="pokemon-image" />`,
   },
   Drizzle: {
     title: "Drizzle",
     icon: `<i class="fas fa-cloud-rain"></i>`,
     night: `<i class="fas fa-cloud-rain"></i>`,
     pokemon: "Water, Electric, Bug",
-    pokemonImage: null,
+    pokemonImage: `<img  src="images/water.png" alt="Gyarados" class="pokemon-image" />
+    <img  src="images/electric.png" alt="Zapdos" class="pokemon-image" />
+    <img  src="images/bug.png" alt="Heracross" class="pokemon-image" />`,
   },
   Rain: {
     title: "Rainy",
     icon: `<i class="fas fa-cloud-showers-heavy"></i>`,
     night: `<i class="fas fa-cloud-showers-heavy"></i>`,
     pokemon: "Water, Electric, Bug",
-    pokemonImage: null,
+    pokemonImage: `<img  src="images/water.png" alt="Gyarados" class="pokemon-image" />
+    <img  src="images/electric.png" alt="Zapdos" class="pokemon-image" />
+    <img  src="images/bug.png" alt="Heracross" class="pokemon-image" />`,
   },
   Snow: {
     title: "Snowing",
     icon: `<i class="far fa-snowflake"></i>`,
     night: `<i class="far fa-snowflake"></i>`,
     pokemon: "Ice, Steel",
-    pokemonImage: null,
+    pokemonImage: `<img  src="images/ice.png" alt="Lapras" class="pokemon-image" />
+    <img  src="images/steel.png" alt="Metagross" class="pokemon-image" />`,
   },
   Clear: {
     title: "Clear Sky",
     icon: `<i class="fas fa-sun"></i>`,
     night: `<i class="fas fa-moon"></i>`,
     pokemon: "Grass, Ground, Fire",
-    pokemonImage: null,
+    pokemonImage: `<img  src="images/grass.png" alt="Venusaur" class="pokemon-image" />
+    <img  src="images/fire.png" alt="Charizard" class="pokemon-image" />`,
   },
   Mist: {
     title: "Misty",
     icon: `<i class="fas fa-umbrella"></i>`,
     night: `<i class="fas fa-umbrella"></i>`,
     pokemon: "Water, Electric, Bug",
-    pokemonImage: null,
+    pokemonImage: `<img  src="images/water.png" alt="Gyarados" class="pokemon-image" />
+    <img  src="images/electric.png" alt="Zapdos" class="pokemon-image" />
+    <img  src="images/bug.png" alt="Heracross" class="pokemon-image" />`,
   },
   Smoke: {
     title: "Smokey",
     icon: `<i class="fas fa-smog"></i>`,
     night: `<i class="fas fa-smog"></i>`,
     pokemon: "Fairy, Fighting, Poison",
-    pokemonImage: null,
+    pokemonImage: `<img  src="images/fairy.png" alt="Gardevoir" class="pokemon-image" /> 
+    <img src="images/fighting.png" alt="Machamp" class="pokemon-image" />
+    <img src="images/poison.png" alt="Weezing" class="pokemon-image" />`,
   },
   Haze: {
     title: "Haze",
     icon: `<i class="fas fa-smog"></i>`,
     night: `<i class="fas fa-smog"></i>`,
     pokemon: "Fairy, Fighting, Poison",
-    pokemonImage: null,
+    pokemonImage: `<img  src="images/fairy.png" alt="Gardevoir" class="pokemon-image" /> 
+    <img src="images/fighting.png" alt="Machamp" class="pokemon-image" />
+    <img src="images/poison.png" alt="Weezing" class="pokemon-image" />`,
   },
   Dust: {
     title: "Dust",
     icon: `<i class="fas fa-smog"></i>`,
     night: `<i class="fas fa-smog"></i>`,
     pokemon: "Fairy, Fighting, Poison",
-    pokemonImage: null,
+    pokemonImage: `<img  src="images/fairy.png" alt="Gardevoir" class="pokemon-image" /> 
+    <img src="images/fighting.png" alt="Machamp" class="pokemon-image" />
+    <img src="images/poison.png" alt="Weezing" class="pokemon-image" />`,
   },
   Fog: {
     title: "Fog",
     icon: `<i class="fas fa-smog"></i>`,
     night: `<i class="fas fa-smog"></i>`,
     pokemon: "Dark, Ghost",
-    pokemonImage: null,
+    pokemonImage: `<img src="images/dark.png" alt="Darkrai" class="pokemon-image" />
+    <img src="images/ghost.png" alt="Gengar" class="pokemon-image" />`,
   },
   Sand: {
     title: "Sand",
     icon: `<i class="fas fa-exclamation"></i>`,
     night: `<i class="fas fa-exclamation"></i>`,
     pokemon: "Fairy, Fighting, Poison",
-    pokemonImage: null,
+    pokemonImage: `<img  src="images/fairy.png" alt="Gardevoir" class="pokemon-image" /> 
+    <img src="images/fighting.png" alt="Machamp" class="pokemon-image" />
+    <img src="images/poison.png" alt="Weezing" class="pokemon-image" />`,
   },
   Ash: {
     title: "Volcanic Ash",
     icon: `<i class="fas fa-exclamation"></i>`,
     night: `<i class="fas fa-exclamation"></i>`,
     pokemon: "Fairy, Fighting, Poison",
-    pokemonImage: null,
+    pokemonImage: `<img  src="images/fairy.png" alt="Gardevoir" class="pokemon-image" /> 
+    <img src="images/fighting.png" alt="Machamp" class="pokemon-image" />
+    <img src="images/poison.png" alt="Weezing" class="pokemon-image" />`,
   },
   Squall: {
     title: "Squall",
     icon: `<i class="fas fa-wind"></i>`,
     night: `<i class="fas fa-wind"></i>`,
     pokemon: "Water, Electric, Bug",
-    pokemonImage: null,
+    pokemonImage: `<img  src="images/water.png" alt="Gyarados" class="pokemon-image" />
+    <img  src="images/electric.png" alt="Zapdos" class="pokemon-image" />
+    <img  src="images/bug.png" alt="Heracross" class="pokemon-image" />`,
   },
   Tornado: {
     title: "Tornado",
     icon: `<i class="fas fa-exclamation"></i>`,
     night: `<i class="fas fa-exclamation"></i>`,
     pokemon: "Water, Electric, Bug",
-    pokemonImage: null,
+    pokemonImage: `<img  src="images/water.png" alt="Gyarados" class="pokemon-image" />
+    <img  src="images/electric.png" alt="Zapdos" class="pokemon-image" />
+    <img  src="images/bug.png" alt="Heracross" class="pokemon-image" />`,
   },
 };
 
@@ -425,8 +450,9 @@ function getCurrentClouds(cloudyConditions) {
     currentConditionsElement.innerHTML = "Cloudy";
     currentIconElement.innerHTML = `<i class="fas fa-cloud"></i>`;
     pokemonTypeElement.innerHTML = "Fairy, Fighting, Poison";
-    pokemonImageElement.innerHTML = `<img  src="images/fairy.png" alt="Gardevoir class="pokemon-image" /> 
-    <img src="images/fighting.png" alt="Machamp" class="pokemon-image" />`;
+    pokemonImageElement.innerHTML = `<img  src="images/fairy.png" alt="Gardevoir" class="pokemon-image" /> 
+    <img src="images/fighting.png" alt="Machamp" class="pokemon-image" />
+    <img src="images/poison.png" alt="Weezing" class="pokemon-image" />`;
   } else if (cloudTitle !== "overcast clouds" && currentHour < 20) {
     currentConditionsElement.innerHTML = "Partly Cloudy";
     currentIconElement.innerHTML = `<i class="fas fa-cloud-sun"></i>`;
@@ -568,7 +594,7 @@ function isWindy() {
     0
   );
   tooltipStyles.insertRule(
-    ".pokemon-tooltip-text {visibility: hidden; width: 300px; background-color: rgba(252, 252, 252, 0.9); color: #757575; font-size: 14px; font-weight: 300; text-shadow: none; line-height: 15px; text-align: center; padding: 5px 0; border: solid #757575 1px; border-radius: 6px; position: absolute; z-index: 1; bottom: 100 %; right: 50 %; margin-right: -20px; opacity: 0; transition: linear 100ms;}",
+    ".pokemon-tooltip-text {visibility: hidden; width: 300px; background-color: rgba(252, 252, 252, 0.9); color: #757575; font-size: 14px; font-weight: 300; text-shadow: none; line-height: 15px; text-align: center; padding: 5px 0; border: solid #757575 1px; border-radius: 6px; position: absolute; z-index: 1; bottom: 100 %; left: 50 %; margin-left: -287px; margin-top: 20px; opacity: 0; transition: linear 100ms;}",
     0
   );
   tooltipStyles.insertRule(

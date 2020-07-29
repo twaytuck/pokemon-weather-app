@@ -140,6 +140,7 @@ img:hover {
 }
 .current-conditions-title {
   padding-left: 70px;
+  margin-top: 10px;
   color: #e3edfb;
   font-size: 20px;
   font-weight: 500;
@@ -205,15 +206,15 @@ img:hover {
   background-color: rgba(43, 111, 182, 0.9);
   border: 1px solid #e3edfb;
   box-shadow: 4px 3px 5px #1d2c5f;
-  margin: 10px 0px;
+  margin: 20px auto;
+  max-width: 400px;
 }
 .pokemon-body {
   padding: 0px;
 }
 .pokemon-image {
   max-height: 100px;
-  max-width: 85px;
-  margin: 0;
+  max-width: 75px;
 }
 .types {
   margin-bottom: 5px;
