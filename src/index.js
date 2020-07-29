@@ -78,7 +78,9 @@ let provinceCity = document.querySelector(".province-country");
 let todayCurrentTemperature = document.querySelector(
   "#today-current-temperature"
 );
+let windSpeed = null;
 let windSpeedElement = document.querySelector("#wind-speed");
+let windSpeedUnitElement = document.querySelector("#wind-unit");
 let humidityElement = document.querySelector("#humidity");
 let searchField = document.querySelector("input");
 //Set global variable for celsius temperature
@@ -100,6 +102,7 @@ function defaultConditions(response) {
   //Capture current Calgary windspeed, round it, convert it to km/h, and display in HTML
   let defaultWindSpeed = response.data.wind.speed;
   defaultWindSpeed = Math.round(defaultWindSpeed * 3.6);
+  windSpeed = defaultWindSpeed;
   if (defaultWindSpeed > 24) {
     isWindy();
   }
@@ -148,6 +151,7 @@ function localConditionsFromInput(response) {
     //Capture current windspeed for searched city, round it, display in HTML
     let windSpeedFromInput = response.data.wind.speed;
     windSpeedFromInput = Math.round(windSpeedFromInput * 3.6);
+    windSpeed = windSpeedFromInput;
     if (windSpeedFromInput > 24) {
       isWindy();
     } else {
@@ -216,6 +220,7 @@ function getLocalConditions(response) {
   //Capture local windspeed, round, and display in HTML
   let localWindspeed = response.data.wind.speed;
   localWindspeed = Math.round(localWindspeed * 3.6);
+  windSpeed = localWindSpeed;
   if (localWindspeed > 24) {
     isWindy();
   } else {
@@ -273,6 +278,9 @@ function convertToFahrenheit() {
   celsius.classList.add("inactive");
   //Change forecast info to fahrenheit
   axios.get(forecastApiUrl).then(getFarForecast);
+  //Change windspeed to mph
+  windSpeedElement.innerHTML = Math.round(windSpeed / 1.609);
+  windSpeedUnitElement.innerHTML = "mph";
 }
 //Convert F to C
 function convertToCelsius() {
@@ -284,6 +292,9 @@ function convertToCelsius() {
   celsius.classList.add("active");
   //Change forecast info to celsius
   axios.get(forecastApiUrl).then(getForecast);
+  //Change windspeed to km/h
+  windSpeedElement.innerHTML = windSpeed;
+  windSpeedUnitElement.innerHTML = "km/h";
 }
 //On click change between Fahrenheit and Celsius
 fahrenheit.addEventListener("click", convertToFahrenheit);
