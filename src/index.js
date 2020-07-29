@@ -343,6 +343,7 @@ let conditions = {
     night: `<i class="fas fa-moon"></i>`,
     pokemon: "Grass, Ground, Fire",
     pokemonImage: `<img  src="images/grass.png" alt="Venusaur" class="pokemon-image" />
+    <img  src="images/ground.png" alt="Golem" class="pokemon-image" />
     <img  src="images/fire.png" alt="Charizard" class="pokemon-image" />`,
   },
   Mist: {
