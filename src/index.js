@@ -316,7 +316,7 @@ let conditions = {
     title: "Snowing",
     icon: `<i class="far fa-snowflake"></i>`,
     night: `<i class="far fa-snowflake"></i>`,
-    pokemon: "Snow, Steel",
+    pokemon: "Ice, Steel",
     pokemonImage: null,
   },
   Clear: {

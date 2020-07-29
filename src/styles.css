@@ -210,6 +210,11 @@ img:hover {
 .pokemon-body {
   padding: 0px;
 }
+.pokemon-image {
+  max-height: 100px;
+  max-width: 85px;
+  margin: 0;
+}
 .types {
   margin-bottom: 5px;
   font-size: 15px;
