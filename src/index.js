@@ -582,7 +582,7 @@ function getFarForecast(response) {
                     <span id="day-5-temp">
                       ${Math.round(farForecastTemp)}°
                     </span>
-                    <span class="five-unit" id="day-5-unit"> C </span>
+                    <span class="five-unit" id="day-5-unit"> F </span>
                   </div>
                 </div>
                 `;
