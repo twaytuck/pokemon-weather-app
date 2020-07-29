@@ -586,7 +586,13 @@ function isWindy() {
                   <span class="pokemon-tooltip-text">
                     Your in-game weather may indicate "Windy." Weather-boosted
                     pokemon in windy conditions are: Dragon, Flying,
-                    Psychic.</span
+                    Psychic.
+                    <div>
+                    <img src="images/dragon.png" alt="Dragonite" class="pokemon-image" />
+                    <img src="images/flying.png" alt="Lugia" class="pokemon-image" />
+                    <img src="images/psychic.png" alt="Mewtwo" class="pokemon-image" />
+                    </div>
+                    </span
                   >
   `;
   tooltipStyles.insertRule(
