@@ -100,7 +100,6 @@ function defaultConditions(response) {
   //Capture current Calgary windspeed, round it, convert it to km/h, and display in HTML
   let defaultWindSpeed = response.data.wind.speed;
   defaultWindSpeed = Math.round(defaultWindSpeed * 3.6);
-  defaultWindSpeed = 50;
   if (defaultWindSpeed > 24) {
     isWindy();
   }
