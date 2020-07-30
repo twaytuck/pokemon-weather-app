@@ -220,7 +220,7 @@ function getLocalConditions(response) {
   //Capture local windspeed, round, and display in HTML
   let localWindspeed = response.data.wind.speed;
   localWindspeed = Math.round(localWindspeed * 3.6);
-  windSpeed = localWindSpeed;
+  windSpeed = localWindspeed;
   if (localWindspeed > 24) {
     isWindy();
   } else {
