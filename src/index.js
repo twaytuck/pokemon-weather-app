@@ -365,7 +365,7 @@ let conditions = {
     <img src="images/poison.png" alt="Weezing" class="pokemon-image" />`,
   },
   Haze: {
-    title: "Hazey",
+    title: "Haze",
     icon: `<i class="fas fa-smog"></i>`,
     night: `<i class="fas fa-smog"></i>`,
     pokemon: "Fairy, Fighting, Poison",
