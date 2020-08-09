@@ -321,7 +321,7 @@ let conditions = {
     <img  src="images/bug.png" alt="Heracross" class="pokemon-image" />`,
   },
   Rain: {
-    title: "Rainy",
+    title: "Raining",
     icon: `<i class="fas fa-cloud-showers-heavy"></i>`,
     night: `<i class="fas fa-cloud-showers-heavy"></i>`,
     pokemon: "Water, Electric, Bug",
@@ -365,7 +365,7 @@ let conditions = {
     <img src="images/poison.png" alt="Weezing" class="pokemon-image" />`,
   },
   Haze: {
-    title: "Haze",
+    title: "Hazey",
     icon: `<i class="fas fa-smog"></i>`,
     night: `<i class="fas fa-smog"></i>`,
     pokemon: "Fairy, Fighting, Poison",
@@ -374,7 +374,7 @@ let conditions = {
     <img src="images/poison.png" alt="Weezing" class="pokemon-image" />`,
   },
   Dust: {
-    title: "Dust",
+    title: "Dusty",
     icon: `<i class="fas fa-smog"></i>`,
     night: `<i class="fas fa-smog"></i>`,
     pokemon: "Fairy, Fighting, Poison",
@@ -383,7 +383,7 @@ let conditions = {
     <img src="images/poison.png" alt="Weezing" class="pokemon-image" />`,
   },
   Fog: {
-    title: "Fog",
+    title: "Foggy",
     icon: `<i class="fas fa-smog"></i>`,
     night: `<i class="fas fa-smog"></i>`,
     pokemon: "Dark, Ghost",
@@ -391,7 +391,7 @@ let conditions = {
     <img src="images/ghost.png" alt="Gengar" class="pokemon-image" />`,
   },
   Sand: {
-    title: "Sand",
+    title: "Sandy",
     icon: `<i class="fas fa-exclamation"></i>`,
     night: `<i class="fas fa-exclamation"></i>`,
     pokemon: "Fairy, Fighting, Poison",
