@@ -12,7 +12,6 @@ p {
   font-size: 19px;
   font-weight: 500;
   text-shadow: 2px 2px 2px #1d2c5f;
-  margin-left: 15px;
   margin-bottom: 3px;
 }
 input {
@@ -50,6 +49,7 @@ img:hover {
 }
 .container {
   margin: 0 auto;
+  padding: 0px;
 }
 .province-country {
   margin: 0px 0px 0px 10px;
@@ -216,7 +216,7 @@ img:hover {
   text-shadow: 1px 1px 2px #1d2c5f;
 }
 .pokemon-image {
-  max-height: 100px;
+  max-height: 75px;
   max-width: 75px;
 }
 .types {
@@ -273,7 +273,7 @@ img:hover {
 }
 .footer {
   color: rgba(252, 252, 252, 0.9);
-  margin-top: 0px;
+  margin-top: 2px;
 }
 .link {
   color: rgba(36, 13, 206, 0.8);
@@ -281,4 +281,6 @@ img:hover {
 .link:hover {
   text-decoration: none;
   color: #fdcb06;
+}
+card {
 }
