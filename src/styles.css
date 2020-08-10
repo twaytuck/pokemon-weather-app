@@ -7,13 +7,6 @@ label {
   display: block;
   color: rgba(252, 252, 252, 0.9);
 }
-h1 {
-  font-size: 80px;
-  font-weight: 600;
-  color: #fdcb06;
-  text-shadow: 2px 2px 2px #1d2c5f;
-  margin: 0px;
-}
 p {
   color: #fdcb06;
   font-size: 19px;
@@ -22,22 +15,14 @@ p {
   margin-left: 15px;
   margin-bottom: 3px;
 }
-h2 {
-  font-size: 19px;
-  font-weight: 400;
-  line-height: 19px;
-}
-h3 {
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 18px;
-}
 input {
   background-color: rgba(252, 252, 252, 0.8);
   border: 1px solid #2b6fb6;
   border-radius: 4px;
   box-shadow: 1px 1px 2px #1d2c5f;
   color: #c11b1b;
+  line-height: 25px;
+  margin: 0px;
 }
 button {
   border-radius: 50px;
@@ -74,10 +59,12 @@ img:hover {
   color: rgba(252, 252, 252, 0.9);
   font-weight: 400;
   font-size: 17px;
+  line-height: 25px;
 }
 .subtitle {
   margin-top: 10px;
   min-width: 361px;
+  margin-bottom: 0px;
 }
 .info-tooltip {
   position: relative;
@@ -116,6 +103,15 @@ img:hover {
 }
 .search-button {
   margin: 0px;
+}
+.current-city {
+  font-size: 80px;
+  font-weight: 600;
+  line-height: 100px;
+  color: #fdcb06;
+  text-shadow: 2px 2px 2px #1d2c5f;
+  margin: 0px;
+  padding: 0px;
 }
 .current-card {
   background-color: rgba(43, 111, 182, 0);
@@ -234,8 +230,9 @@ img:hover {
 }
 .forecast-card {
   margin: 0px;
-  padding: 5px;
+  padding: 0px;
   max-width: 1100px;
+  min-height: 175px;
   border: 2px solid #2b6fb6;
   background: rgba(252, 252, 252, 0.7);
 }
@@ -244,24 +241,34 @@ img:hover {
 }
 .forecast-day {
   min-width: 120px;
-  padding: 5px;
+  padding: 0px;
+  margin: 0px;
 }
 .forecast-day-of-the-week {
   color: #1f04ea;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 19px;
+  margin-top: 0px;
+  margin-bottom: 10px;
 }
 .forecast-date {
   color: #c11b1b;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18px;
+  margin-bottom: 10px;
 }
 .forecast-icon {
   font-size: 40px;
   line-height: 40px;
   color: #fdcb06;
   text-shadow: 1px 1px 4px #1d2c5f;
+  margin-bottom: 10px;
 }
 .five-temp {
   font-size: 15px;
   font-weight: 400;
-  padding-top: 10px;
   color: #1f04ea;
 }
 .footer {

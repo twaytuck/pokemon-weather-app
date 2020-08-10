@@ -73,7 +73,7 @@ function getDateTime(timestamp) {
 let apiKey = "7289d7c7b5f7a8f168b51954ee07d1a2";
 let unit = "metric";
 //Set HTML elements as variables
-let h1 = document.querySelector("h1");
+let h1 = document.querySelector("#current-city");
 let provinceCity = document.querySelector(".province-country");
 let todayCurrentTemperature = document.querySelector(
   "#today-current-temperature"
@@ -521,12 +521,12 @@ function getForecast(response) {
     }
     forecastElement.innerHTML += `
                 <div class="col forecast-day">
-                  <h2 class="forecast-day-of-the-week">
+                  <div class="forecast-day-of-the-week">
                   ${forecastWeekDay}
-                  </h2>
-                  <h3 class="forecast-date">
+                  </div>
+                  <div class="forecast-date">
                   ${forecastMonth} ${forecastDate}, ${forecastYear}
-                  </h3>
+                  </div>
                   <div class="forecast-icon">
                   ${forecastIcon}
                   </div>
@@ -569,12 +569,12 @@ function getFarForecast(response) {
     }
     forecastElement.innerHTML += `
                 <div class="col forecast-day">
-                  <h2 class="forecast-day-of-the-week">
+                  <div class="forecast-day-of-the-week">
                   ${forecastWeekDay}
-                  </h2>
-                  <h3 class="forecast-date">
+                  </div>
+                  <div class="forecast-date">
                   ${forecastMonth} ${forecastDate}, ${forecastYear}
-                  </h3>
+                  </div>
                   <div class="forecast-icon">
                   ${forecastIcon}
                   </div>
