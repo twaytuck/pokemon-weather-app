@@ -50,6 +50,10 @@ img:hover {
 .container {
   margin: 0 auto;
   padding: 0px;
+  max-width: 900px;
+}
+.row {
+  margin: 0px 5px;
 }
 .province-country {
   margin: 0px 0px 0px 10px;
@@ -86,7 +90,7 @@ img:hover {
   z-index: 1;
   top: 100%;
   left: 50%;
-  margin-left: -50px;
+  margin-left: -20px;
   opacity: 0;
   transition: linear 100ms;
 }
@@ -202,6 +206,7 @@ img:hover {
   box-shadow: 4px 3px 5px #1d2c5f;
   margin: 20px auto;
   max-width: 400px;
+  min-width: 200px;
   max-height: 300px;
 }
 .pokemon-body {
@@ -277,6 +282,7 @@ img:hover {
 }
 .link {
   color: rgba(36, 13, 206, 0.8);
+  margin-left: 20px;
 }
 .link:hover {
   text-decoration: none;
